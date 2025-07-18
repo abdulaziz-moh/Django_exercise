@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ALX_week9_first_exercise_app'
 ]
 
 MIDDLEWARE = [
