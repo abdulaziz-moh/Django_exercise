@@ -1,0 +1,27 @@
+{% comment %} <!DOCTYPE html> {% endcomment %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <img src= "images/logo.jpg" alt = "logo">
+        <h1>WELLCOME TO MY FIRST DJANGO APP </h1>
+
+    </header>
+    <main  style="background-color: aqua;">
+        <h2>LISTS OF PRODUCT AVAILABLE</h2>
+        <hr>
+        {% for val in products %}
+             <li>{{val.name}}</li>
+            {% endfor %}
+
+    </main>   
+    <footer>
+        
+    </footer>
+    
+</body>
+</html>
