@@ -13,6 +13,10 @@
     </header>
     <main  style="background-color: aqua;">
         <h2>LISTS OF PRODUCT AVAILABLE</h2>
+        {% if not products %}
+        <h3><li>empty list<li></h3>
+        {% endif %}
+        
         <hr>
         {% for val in products %}
              <li>{{val.name}}</li>
