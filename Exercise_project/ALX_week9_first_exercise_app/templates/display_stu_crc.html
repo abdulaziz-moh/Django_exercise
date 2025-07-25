@@ -1,0 +1,42 @@
+{% comment %} <!DOCTYPE html> {% endcomment %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <img src= "images/logo.jpg" alt = "logo">
+        <h1>WELLCOME TO MY FIRST DJANGO APP </h1>
+
+    </header>
+    <main  style="background-color: aqua;">
+        {% comment %}  {% endcomment %}
+        <h2>LISTS OF cources AVAILABLE</h2>
+        {% if not cources %}
+        <h3><li>empty cources list<li></h3>
+        {% endif %}
+        {% comment %}  {% endcomment %}
+        <hr>
+        {% for val in cources %}
+             <li>{{val.c_name}}</li>
+            {% endfor %}
+        {% comment %}  {% endcomment %}
+        {% comment %}  {% endcomment %}
+        <h2>LISTS OF students AVAILABLE</h2>
+        {% if not students %}
+        <h3><li>empty cources list<li></h3>
+        {% endif %}
+        {% comment %}  {% endcomment %}
+        <hr>
+        {% for val in cources %}
+             <li>{{val.c_name}}</li>
+            {% endfor %}
+    </main>   
+    <footer>
+        
+    </footer>
+    
+</body>
+</html>
