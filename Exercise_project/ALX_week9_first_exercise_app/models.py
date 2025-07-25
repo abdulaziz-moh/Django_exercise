@@ -50,8 +50,8 @@ class ProductDetail(models.Model):  # we put the OneToOneField on the dependent 
 #------------------------------------------------------------------------------------------#
  
 class Student(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=True)
     
 class Cource(models.Model):
-    c_name = models.CharField(max_length=255)
+    c_name = models.CharField(max_length=255, unique = True)
     students = models.ManyToManyField(Student,related_name="cources")   # the manytomany field can't have a on_deleted attribute

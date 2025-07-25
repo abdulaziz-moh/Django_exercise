@@ -13,23 +13,18 @@
     </header>
     <main  style="background-color: aqua;">
         {% comment %} list of students {% endcomment %}
-            <h2>LISTS OF students AVAILABLE</h2>
-            {% if not students %}
-            <h3><li>empty cources list<li></h3>
+            <h2> students WITH COURCE THEY TAKE</h2>
+            {% if not pairs %}
+            <h3><li>empty students list<li></h3>
             {% endif %}
 
             <hr>
-            {% for val in students %}
-                <li>{{val.name}}</li>
+            {% for student in pairs %}
+                <h3>student {{student.name}}: </h3>
+                {% for cource in student.cources.all %}
+                    <li>{{cource.c_name}}</li>
+
                 {% endfor %}
-        {% comment %} list of cources  {% endcomment %}
-        <h2>LISTS OF cources AVAILABLE</h2>
-            {% if not cources %}
-            <h3><li>empty cources list<li></h3>
-            {% endif %}
-        <hr>
-            {% for val in cources %}
-                <li>{{val.c_name}}</li>
             {% endfor %}
     </main>   
     <footer>

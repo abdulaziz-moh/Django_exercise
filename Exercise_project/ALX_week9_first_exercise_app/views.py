@@ -64,26 +64,26 @@ def create_product(request):
 
 
 def add_product_discription(request):   # dependent on the product 
-    product = Product.objects.get(id = 1)
-    ProductDetail.objects.create(
-        product =product,
-    )
-    product = Product.objects.get(id = 2)
-    ProductDetail.objects.create(
-        product =product,
-    )
-    product = Product.objects.get(id = 3)
-    ProductDetail.objects.create(
-        product =product,
-    )
-    product = Product.objects.get(id = 4)
-    ProductDetail.objects.create(
-        product =product,
-    )
-    product = Product.objects.get(id = 5)
-    ProductDetail.objects.create(
-        product =product,
-    )
+    # product = Product.objects.get(id = 1)
+    # ProductDetail.objects.create(
+    #     product =product,
+    # )
+    # product = Product.objects.get(id = 2)
+    # ProductDetail.objects.create(
+    #     product =product,
+    # )
+    # product = Product.objects.get(id = 3)
+    # ProductDetail.objects.create(
+    #     product =product,
+    # )
+    # product = Product.objects.get(id = 4)
+    # ProductDetail.objects.create(
+    #     product =product,
+    # )
+    # product = Product.objects.get(id = 5)
+    # ProductDetail.objects.create(
+    #     product =product,
+    # )
     
     # with out select_related
     products = Product.objects.all()
@@ -97,9 +97,10 @@ def add_product_discription(request):   # dependent on the product
     for pord in products:
         detail = prod.productdetail  # all are requested once first at     products =Product.objects.select_related("productdetail")
         details.append(detail)
-            
+           
+    pairs = zip(products,details)  # we do this because we can not iterate over list using and index(like by using)
         
-    return render(request,"all_product_with_detail.html",{"products":products,"details":details})
+    return render(request,"all_product_with_detail.html",{"pairs":pairs})
 
 
 def update_product(request, product_name = "Ergonomic Office Chair",changed_attribute = "price" , changed_value = "300"):
@@ -141,24 +142,30 @@ def functionwith_prefetch_related(request,product_name):
         return render(request, "",{"":""})
     except Product.DoesNotExist:
         return render(request, "",{"":""})
-    
+    # 
     
 def create_student(request):
         # student 1
     Student.objects.create(
         name='Abebe Chala',
     )
+    cources = Cource.objects.all()
+    students = Student.objects.all()
+    return render(request, "display_stu_crc.html",{"students":students,"cources":cources})
 
 def create_cource(request):
         # cource 1
     Cource.objects.create(
         c_name='Fundamental of programming 1',
     )
+    cources = Cource.objects.all()
+    students = Student.objects.all()
+    return render(request, "display_stu_crc.html",{"students":students,"cources":cources})
 def enrlol_student(request):
     stu = "Abebe Chala"
     crc = "Fundamental of programming 1"
-    student1 = Student.objects.get_or_create(name = stu)
-    cource1 = Cource.objects.get_or_create(c_name = crc)
+    student1 = Student.objects.get(name = stu)
+    cource1 = Cource.objects.get(c_name = crc)
     
     student1.cources.add(cource1)
     
@@ -178,15 +185,7 @@ def display_stu_crc(request):
             print(cource.c_name, end="  ")
             
     # with prefetch_related(arg)
-    stu_s = Student.objects.prefetch_related('cources')
-    cource_for_each_stu = {}
-    for stu in stu_s:
-        print(f"student name: {stu.name}")
-        crc = []
-        for cource in stu.cources.all():
-            crc.append(cource)
-            print(cource.c_name, end="  ")
-        cource_for_each_stu[stu] = crc
-        
-    return render(request,"display_stu_crc.html",{"students":stu_s, "cources":cource_for_each_stu})
+    pairs = Student.objects.prefetch_related('cources')
+
+    return render(request,"stu_vs_cource.html",{"pairs":pairs})
      
