@@ -15,6 +15,6 @@ urlpatterns = [
     path("create_student/",views.create_student),
     path("create_cource/",views.create_cource),
     path("enrlol_student/",views.enrlol_student),
-    path("display_stu_crc/",views.display_stu_crc),
+    path("display_stu_crc/",views.display_stu_crc.as_view()),
     
 ]

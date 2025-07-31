@@ -174,18 +174,25 @@ def enrlol_student(request):
     
     return render(request,"display_stu_crc.html",{"students":students, "cources":cources})
 
-def display_stu_crc(request):
-    # because it's many to many we use prefetch_related
+# def display_stu_crc(request):
+#     # because it's many to many we use prefetch_related
     
-    # without prefetch_related   
-    stu_s = Student.objects.all() # no prefetch_related here
-    for stu in stu_s:
-        print(f"student name: {stu.name}")
-        for cource in stu.cources.all():
-            print(cource.c_name, end="  ")
+#     # without prefetch_related   
+#     stu_s = Student.objects.all() # no prefetch_related here
+#     for stu in stu_s:
+#         print(f"student name: {stu.name}")
+#         for cource in stu.cources.all():
+#             print(cource.c_name, end="  ")
             
-    # with prefetch_related(arg)
-    pairs = Student.objects.prefetch_related('cources')
+#     # with prefetch_related(arg)
+#     pairs = Student.objects.prefetch_related('cources')
 
-    return render(request,"stu_vs_cource.html",{"pairs":pairs})
+#     return render(request,"stu_vs_cource.html",{"pairs":pairs})
      
+from django.views.generic import ListView,DetailView
+class display_stu_crc(ListView):
+    template_name  = "stu_vs_cource.html"
+    queryset = Student.objects.prefetch_related('cources')  # if you specifically want prefetch related
+
+    # model = Student  # if you let django do it any way, possibly not prefetch related
+    context_object_name = "pairs"
