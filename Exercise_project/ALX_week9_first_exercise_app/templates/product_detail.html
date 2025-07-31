@@ -14,14 +14,14 @@
         {% if product == 404 %}
             <h1> SORRY THEIR IS NO PRODUCT NAMED: {{name_of_product}}</h1>
         {% else %}
-            <h1>{{name_of_product}} details: </h1>
+            <h1>{{product.name}} details: </h1>
             <ul>
                 <li>id: {{product.id}}  </li>
                 <li>name: {{product.name}} </li>
                 <li>description: {{product.description}} </li>
                 <li>price: {{product.price}} </li>
                 <li>category: {{product.category}} </li>
-                <li>created_at: {{product.created_at}}</li>
+                <li>created_at: {{product.productdetail.created_at}}</li>
 
             <ul>
         {% endif %}

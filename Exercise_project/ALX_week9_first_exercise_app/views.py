@@ -11,7 +11,7 @@ def product_List(request):
 def product_detail(request,name_of_product = "product_detail"):
         
     product = get_object_or_404(Product, name = "Ergonomic Office Chair")
-    return render(request, "product_detail.html", {"product":product,"name_of_product":name_of_product})
+    return render(request, "product_detail.html", {"product":product})
 
 def create_product(request):
         # Product 1
@@ -196,3 +196,11 @@ class display_stu_crc(ListView):
 
     # model = Student  # if you let django do it any way, possibly not prefetch related
     context_object_name = "pairs"
+
+
+
+
+class product_detail(DetailView):
+    model = Product
+    template_name = "product_detail.html"
+    context_object_name = "product"
