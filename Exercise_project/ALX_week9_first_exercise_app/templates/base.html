@@ -1,0 +1,30 @@
+{% load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel ="stylesheet" href = "{% static 'ALX_week9_first_exercise_app/css/basestyle.css' %}"  >
+    <title>Document</title>
+</head>
+<body>
+<div class = "site">
+
+    <header>
+        <h1> WELLCOME TO MY FIRST DJANGO APP </h1>
+    </header>
+
+    <main >
+        {% block content %}
+               
+                <h1 class = "text">THIS IS THE base PAGE</h1>
+
+        {% endblock %}
+    </main>   
+    
+    <footer>
+        <p>2025 all rights reserved</p>
+    </footer>
+
+</div>
+</body>
+</html>

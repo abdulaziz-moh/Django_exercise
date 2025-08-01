@@ -1,0 +1,43 @@
+/* Reset default browser margins and paddings */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.site{
+    min-height: 100dvh;
+    display: grid;
+    grid-template-rows:auto 1fr auto;
+    grid-template-columns: minmax(0,1fr);
+}
+
+body{
+}
+
+header{
+    background-color:azure;
+    width: 100%;
+    text-align: center;
+}
+
+
+main{
+    background-image:url(../img/logo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment:scroll;
+    background-size: cover;
+    padding: 5%;
+    text-align: center;
+
+}
+.text{
+
+    color: white;
+}
+
+footer {
+    background-color:rgb(145, 201, 250);
+    padding-left: 3%;  
+    text-align: center;
+}

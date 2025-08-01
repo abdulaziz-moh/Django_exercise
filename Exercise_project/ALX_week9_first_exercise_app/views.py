@@ -204,3 +204,6 @@ class product_detail(DetailView):
     model = Product
     template_name = "product_detail.html"
     context_object_name = "product"
+
+def tobasehtml(request):
+    return render(request, "base.html")
