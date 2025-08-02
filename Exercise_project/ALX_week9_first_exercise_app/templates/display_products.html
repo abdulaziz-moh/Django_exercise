@@ -1,5 +1,19 @@
-{% comment %} <!DOCTYPE html> {% endcomment %}
-<html lang="en">
+{% extends "base.html" %}
+{% block content %}
+    <div class= "text">
+        <h2>LISTS OF PRODUCT AVAILABLE</h2>
+        {% if not products %}
+        <h3><li>empty list<li></h3>
+        {% endif %}
+        
+        <hr>
+        {% for val in products %}
+                <li>{{val.name}}</li>
+            {% endfor %}
+    </div>
+{% endblock %}
+{% comment %} use the above instead of this  {% endcomment %}
+{% comment %} <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,4 +42,4 @@
     </footer>
     
 </body>
-</html>
+</html> {% endcomment %}

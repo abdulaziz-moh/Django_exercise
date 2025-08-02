@@ -28,7 +28,7 @@ main{
     background-attachment:scroll;
     background-size: cover;
     padding: 5%;
-    text-align: center;
+    /* text-align: center; */
 
 }
 .text{

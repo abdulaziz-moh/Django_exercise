@@ -1,5 +1,29 @@
-{% comment %} <!DOCTYPE html> {% endcomment %}
-<html lang="en">
+{% extends "base.html" %}
+{% block content %}
+
+    {% comment %} list of students {% endcomment %}
+        <h2>LISTS OF students AVAILABLE</h2>
+        {% if not students %}
+        <h3><li>empty cources list<li></h3>
+        {% endif %}
+
+        <hr>
+        {% for val in students %}
+            <li>{{val.name}}</li>
+            {% endfor %}
+    {% comment %} list of cources  {% endcomment %}
+    <h2>LISTS OF cources AVAILABLE</h2>
+        {% if not cources %}
+        <h3><li>empty cources list<li></h3>
+        {% endif %}
+    <hr>
+        {% for val in cources %}
+            <li>{{val.c_name}}</li>
+        {% endfor %}
+
+{% endblock %}
+
+{% comment %} <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,9 +35,9 @@
         <h1>WELLCOME TO MY FIRST DJANGO APP </h1>
 
     </header>
-    <main  style="background-color: aqua;">
+    <main  style="background-color: aqua;"> {% endcomment %}
         {% comment %} list of students {% endcomment %}
-            <h2>LISTS OF students AVAILABLE</h2>
+            {% comment %} <h2>LISTS OF students AVAILABLE</h2>
             {% if not students %}
             <h3><li>empty cources list<li></h3>
             {% endif %}
@@ -21,20 +45,20 @@
             <hr>
             {% for val in students %}
                 <li>{{val.name}}</li>
-                {% endfor %}
+                {% endfor %} {% endcomment %}
         {% comment %} list of cources  {% endcomment %}
-        <h2>LISTS OF cources AVAILABLE</h2>
+        {% comment %} <h2>LISTS OF cources AVAILABLE</h2>
             {% if not cources %}
             <h3><li>empty cources list<li></h3>
             {% endif %}
         <hr>
             {% for val in cources %}
                 <li>{{val.c_name}}</li>
-            {% endfor %}
-    </main>   
+            {% endfor %} {% endcomment %}
+    {% comment %} </main>   
     <footer>
         
     </footer>
     
 </body>
-</html>
+</html> {% endcomment %}
