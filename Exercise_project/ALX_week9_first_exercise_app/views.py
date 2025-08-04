@@ -1,4 +1,4 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from .models import Product,Cource,Student,ProductDetail
 
 # Create your views here.
@@ -207,3 +207,22 @@ class product_detail(DetailView):
 
 def tobasehtml(request):
     return render(request, "base.html")
+
+
+from django.contrib.auth import login
+from django.contrib.auth.forms import AuthenticationForm
+def login_view(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(data = request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            # render(request,"base.html")
+            return redirect('/Product/basehtml/') # USED absolute path "which is the path start from '/' and it will be appended to the http://127.0.0.1:8000/"
+                                                  # but if we use the relative path "whic don't have '/' at the start , this path will be appended to the path the browser have in its url bar" 
+                                                  # but from this ambiguty it's recomended practice to use name instead of the pattern so that django can handle it 
+    else:
+        form = AuthenticationForm()
+    return render(request, "login.html", {'form':form})
+            
+            

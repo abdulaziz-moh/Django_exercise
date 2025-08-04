@@ -20,6 +20,7 @@ urlpatterns = [
     path("create_cource/",views.create_cource),
     path("enrlol_student/",views.enrlol_student),
     path("display_stu_crc/",views.display_stu_crc.as_view()),
-    path("basehtml/",views.tobasehtml)
+    path("basehtml/",views.tobasehtml,name= "base"),
+    path("login/",views.login_view,name='login'),
     
 ]
