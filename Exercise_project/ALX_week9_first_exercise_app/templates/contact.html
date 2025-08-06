@@ -22,7 +22,32 @@
     {% endcomment %}
     <form method = 'post'>
         {% csrf_token   %} 
+        {% if success %}
+        <p style = "background-color : green ; color: green" >Your message succesfully sent! </p>
+        {% endif %}
+        <p>
+          {{ form.name.label_tag }}</br>
+          {{ form.name }}
+          {% if form.name.errors %}
+            <span style = "color: red">{{ form.name.errors }}</span>
+          {% endif %}
+        </p>
+        <p>
+          {{ form.email.label_tag }}</br>
+          {{ form.email }}
+          {% if form.email.errors %}
+            <span style = "color:red ">{{ form.email.errors}}</span>
+          {% endif %}
+          </p>
+         <p>
+          {{ form.message.label_tag }}</br>
+          {{ form.message }}
+          {% if form.message.errors %}
+            <span style = "color:red "></span>  
+          {% endif %}        
+        </p>
 
+        <button type = 'submit'> submit</button>
     </form>
 
 
