@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>contact us</title>
+  </head>
+
+  <body>
+
+    <form method='post'>
+        {% csrf_token  %}
+
+        {% if form.errors %}
+            <span> {{ form.errors }} </span>
+        {% endif %}
+
+        {{ form.as_p }}
+
+        <button type = 'submit'>contact us</button>
+    </form>
+
+    {% comment %} 
+    This can be more customized way 
+    {% endcomment %}
+    <form method = 'post'>
+        {% csrf_token   %} 
+
+    </form>
+
+
+
+  </body>
+</html>
