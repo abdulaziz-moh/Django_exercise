@@ -217,9 +217,10 @@ def login_view(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            # render(request,"base.html")
+            
+
             return render(request,'loggedinuser.html')
-            return redirect('/Product/basehtml/') # USED absolute path "which is the path start from '/' and it will be appended to the http://127.0.0.1:8000/"
+            # return redirect('/Product/basehtml/') # USED absolute path "which is the path start from '/' and it will be appended to the http://127.0.0.1:8000/"
                                                   # but if we use the relative path "whic don't have '/' at the start , this path will be appended to the path the browser have in its url bar" 
                                                   # but from this ambiguty it's recomended practice to use name instead of the pattern so that django can handle it 
     else:
@@ -249,3 +250,26 @@ from django.contrib.auth import logout
 def logout_view(request):
     logout(request)
     return render(request,'anonymoususer.html')
+
+from . forms import SignupForm
+def signup_view(request):
+    if request.method == 'POST':
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            
+            # if we want the user to automatically login move to login 
+            # login(request, user)  # this loges in the user and populate the session for future automatic login
+            # return render(request,'loggedinuser.html')
+            
+            # if not logged in 
+            # return render(request, 'login.html') # if we use this their will be a loop of signup pages because it will not change the url /signup only coming with the login page and the request.post will come to the signup view not login view
+            
+            return redirect("login")
+        else :
+            return render(request,'signup.html',{'form':form}) 
+ 
+    else:
+        form = SignupForm()
+    return render(request,'signup.html',{'form':form})
+    

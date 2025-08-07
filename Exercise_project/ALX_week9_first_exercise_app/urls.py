@@ -23,8 +23,8 @@ urlpatterns = [
     path("basehtml/",views.tobasehtml,name= "base"),
     path("login/",views.login_view,name='login'),
     path("logout/",views.logout_view,name='logout'),
-
-    path("contactus/",views.contact_veiw)
+    path('signup/',views.signup_view, name='signup'),
+    path("contactus/",views.contact_veiw),
     
     
 ]

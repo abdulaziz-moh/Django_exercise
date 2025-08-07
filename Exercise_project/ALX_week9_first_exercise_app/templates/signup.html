@@ -1,0 +1,45 @@
+<html>
+    <header>
+        <title>Sign up </title>
+    </header>
+
+    <body>
+        <form method = 'POST'>
+            {% csrf_token %}
+            {% comment %} not customized but can show the sign up form  {% endcomment %}
+            {% comment %} {{ form.as_p }}  {% endcomment %}
+
+            {% comment %} let's customize it {% endcomment %}
+            <p>
+                {{ form.username.label_tag }}
+                {{ form.username }}
+                {% if form.username.errors %}
+                    <span style = "color:red;">{{ form.username.errors }} </span>
+                {% endif %}
+            </p>  
+            <p>
+                {{ form.email.label_tag }}
+                {{ form.email }}
+                {% if form.email.errors %}
+                    <span style = "color: red; "> {{form.email.errors }} </span>
+                {% endif %}
+            </p>  
+            <p>
+                {{ form.password1.label_tag }}
+                {{ form.password1 }}
+                {% if form.password1.errors %}
+                    <span style = "color:red; ">{{ form.password1.errors}}</span>
+                {% endif %}     
+            </p>
+            <p>
+                {{ form.password2.label_tag }}
+                {{ form.password2 }}
+                {% if form.password2.errors %}
+                    <span style = "color:red; "> {{ form.password2.errors }}<span>
+                {% endif %}
+            </p>
+
+            <button type = 'submit' >Sign up</button>
+        </form>
+    </body>
+</html>
