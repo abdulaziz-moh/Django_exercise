@@ -22,6 +22,9 @@ urlpatterns = [
     path("display_stu_crc/",views.display_stu_crc.as_view()),
     path("basehtml/",views.tobasehtml,name= "base"),
     path("login/",views.login_view,name='login'),
+    path("logout/",views.logout_view,name='logout'),
+
     path("contactus/",views.contact_veiw)
+    
     
 ]

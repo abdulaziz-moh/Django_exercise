@@ -115,6 +115,8 @@ USE_I18N = True
 
 USE_TZ = True
 
+LOGIN_URL = '/Product/login/'  # added this to rediret to this view when some view is obligued to login befor accesing that view
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/

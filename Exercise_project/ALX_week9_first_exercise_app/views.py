@@ -218,6 +218,7 @@ def login_view(request):
             user = form.get_user()
             login(request, user)
             # render(request,"base.html")
+            return render(request,'loggedinuser.html')
             return redirect('/Product/basehtml/') # USED absolute path "which is the path start from '/' and it will be appended to the http://127.0.0.1:8000/"
                                                   # but if we use the relative path "whic don't have '/' at the start , this path will be appended to the path the browser have in its url bar" 
                                                   # but from this ambiguty it's recomended practice to use name instead of the pattern so that django can handle it 
@@ -227,6 +228,9 @@ def login_view(request):
             
 
 from . forms import ContactForm
+from django.contrib.auth.decorators import login_required 
+
+@login_required  # redirect to login view if the user is not logged in. making it first login befor accesing this view 
 def contact_veiw(request):
     if request.method == 'post': 
         form = ContactForm(request.POST)
@@ -241,3 +245,7 @@ def contact_veiw(request):
     else:
         return render(request,'contact.html', {'form':ContactForm()})
     
+from django.contrib.auth import logout
+def logout_view(request):
+    logout(request)
+    return render(request,'anonymoususer.html')
